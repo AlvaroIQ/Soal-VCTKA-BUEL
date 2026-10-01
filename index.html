@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuis Interaktif Operasi Hitung Campuran Pecahan</title>
+    <title>Kuis Interaktif Operasi Hitung Campuran Pecahan | VCTKA BUEL</title>
     <style>
-        /* Efek Neon Berubah-ubah pada Garis Tepi (Border) */
-        @keyframes neonGlow {
-            0% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px #ff0055; }
-            33% { border-color: #00ffcc; box-shadow: 0 0 15px #00ffcc, inset 0 0 10px #00ffcc; }
-            66% { border-color: #cc00ff; box-shadow: 0 0 15px #cc00ff, inset 0 0 10px #cc00ff; }
-            100% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px #ff0055; }
-        }
-
-        @keyframes textNeon {
-            0% { color: #ff0055; text-shadow: 0 0 5px #ff0055, 0 0 10px #ff0055; }
-            33% { color: #00ffcc; text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; }
-            66% { color: #cc00ff; text-shadow: 0 0 5px #cc00ff, 0 0 10px #cc00ff; }
-            100% { color: #ff0055; text-shadow: 0 0 5px #ff0055, 0 0 10px #ff0055; }
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --primary-blue: #38bdf8;
+            --accent-pink: #ec4899;
+            --text-color: #f8fafc;
+            --border-color: #334155;
         }
 
         body {
-            background-color: #0d0d1a;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
@@ -34,95 +28,143 @@
 
         .container {
             width: 100%;
-            max-width: 650px;
-            background: #14142b;
-            border: 4px solid #ff0055;
-            border-radius: 15px;
+            max-width: 600px;
+            background: var(--card-bg);
+            border: 2px solid var(--primary-blue);
+            border-radius: 16px;
             padding: 30px;
-            animation: neonGlow 6s infinite;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15), 0 8px 10px -6px rgba(236, 72, 153, 0.15);
         }
 
         h1 {
             text-align: center;
-            animation: textNeon 6s infinite;
-            font-size: 1.8rem;
+            color: var(--primary-blue);
+            font-size: 1.5rem;
             margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
         }
 
-        .question-box {
-            background: #1f1f3a;
-            border: 2px solid #3d3d6b;
-            border-radius: 10px;
-            padding: 15px 20px;
-            margin-bottom: 20px;
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .question-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #00ffcc;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--accent-pink);
+            line-height: 1.6;
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed var(--border-color);
+            letter-spacing: 0.5px;
         }
 
-        label {
+        label.option-label {
             display: block;
-            margin: 8px 0;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            margin: 10px 0;
+            border-radius: 8px;
             cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            transition: background 0.2s;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
         }
 
-        label:hover {
-            background: rgba(0, 255, 204, 0.1);
+        label.option-label:hover {
+            border-color: var(--primary-blue);
+            background: rgba(56, 189, 248, 0.05);
         }
 
         input[type="radio"] {
-            margin-right: 10px;
-            accent-color: #00ffcc;
+            margin-right: 12px;
+            accent-color: var(--primary-blue);
         }
 
         .form-group {
-            margin-top: 20px;
-            background: #1f1f3a;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #cc00ff;
+            margin-bottom: 20px;
         }
 
         .form-group label {
-            color: #cc00ff;
-            font-weight: bold;
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px;
-            margin-top: 8px;
-            background: #0d0d1a;
-            border: 1px solid #00ffcc;
+            padding: 12px;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
             color: #fff;
-            border-radius: 5px;
+            border-radius: 8px;
             box-sizing: border-box;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
         }
 
-        button {
-            width: 100%;
-            background: linear-gradient(45deg, #ff0055, #cc00ff);
+        input[type="text"]:focus {
+            border-color: var(--accent-pink);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-pink));
             color: white;
             border: none;
-            padding: 12px;
-            font-size: 1.1rem;
+            padding: 12px 20px;
+            font-size: 1rem;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 0 10px #cc00ff;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.4), 0 0 12px rgba(236, 72, 153, 0.4);
             transition: 0.3s;
         }
 
-        button:hover {
-            opacity: 0.9;
-            box-shadow: 0 0 20px #00ffcc;
+        .btn:hover {
+            opacity: 0.95;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.8), 0 0 20px rgba(236, 72, 153, 0.8);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #334155;
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: #475569;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .progress-indicator {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
         }
 
         #status-message {
@@ -135,76 +177,139 @@
 <body>
 
 <div class="container">
-    <h1>Kuis Campuran Pecahan, Desimal & Persen</h1>
+    <h1>Kuis Campuran Pecahan</h1>
+    <div class="progress-indicator" id="progressIndicator">Soal 1 dari 5</div>
     
     <form id="quizForm">
-        <!-- Soal 1 -->
-        <div class="question-box">
-            <div class="question-title">Soal 1: \(\frac{3}{4} + 0,5 \times 25\% = \dots\)</div>
-            <label><input type="radio" name="q1" value="A" required> A. \(\frac{7}{8}\)</label>
-            <label><input type="radio" name="q1" value="B"> B. \(\frac{5}{8}\)</label>
-            <label><input type="radio" name="q1" value="C"> C. \(1\frac{1}{8}\)</label>
-            <label><input type="radio" name="q1" value="D"> D. \(\frac{3}{8}\)</label>
+        <!-- Halaman 1 (Soal 1) -->
+        <div class="step active" id="step-1">
+            <div class="question-title">Soal 1: 3/4 + 0,5 x 25% = ...</div>
+            <label class="option-label"><input type="radio" name="q1" value="A"> A. 7/8</label>
+            <label class="option-label"><input type="radio" name="q1" value="B"> B. 5/8</label>
+            <label class="option-label"><input type="radio" name="q1" value="C"> C. 1 1/8</label>
+            <label class="option-label"><input type="radio" name="q1" value="D"> D. 3/8</label>
+            <div class="btn-container">
+                <div></div>
+                <button type="button" class="btn" onclick="nextStep(1)">Selanjutnya</button>
+            </div>
         </div>
 
-        <!-- Soal 2 -->
-        <div class="question-box">
-            <div class="question-title">Soal 2: \(1,2 \div \left( \frac{2}{5} + 15\% \right) = \dots\)</div>
-            <label><input type="radio" name="q2" value="A" required> A. \(1,75\)</label>
-            <label><input type="radio" name="q2" value="B"> B. \(2\frac{2}{11}\)</label>
-            <label><input type="radio" name="q2" value="C"> C. \(2,50\)</label>
-            <label><input type="radio" name="q2" value="D"> D. \(1\frac{1}{11}\)</label>
+        <!-- Halaman 2 (Soal 2) -->
+        <div class="step" id="step-2">
+            <div class="question-title">Soal 2: 1,2 / ( 2/5 + 15% ) = ...<br><span style="font-size: 0.85rem; color: #94a3b8;">(Catatan: garis miring / menyatakan pembagian)</span></div>
+            <label class="option-label"><input type="radio" name="q2" value="A"> A. 1,75</label>
+            <label class="option-label"><input type="radio" name="q2" value="B"> B. 2 2/11</label>
+            <label class="option-label"><input type="radio" name="q2" value="C"> C. 2,50</label>
+            <label class="option-label"><input type="radio" name="q2" value="D"> D. 1 1/11</label>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Sebelumnya</button>
+                <button type="button" class="btn" onclick="nextStep(2)">Selanjutnya</button>
+            </div>
         </div>
 
-        <!-- Soal 3 -->
-        <div class="question-box">
-            <div class="question-title">Soal 3: \(75\% - \left( 0,2 \times 1\frac{1}{2} \right) + \frac{1}{4} = \dots\)</div>
-            <label><input type="radio" name="q3" value="A" required> A. \(0,5\)</label>
-            <label><input type="radio" name="q3" value="B"> B. \(0,6\)</label>
-            <label><input type="radio" name="q3" value="C"> C. \(0,7\)</label>
-            <label><input type="radio" name="q3" value="D"> D. \(0,8\)</label>
+        <!-- Halaman 3 (Soal 3) -->
+        <div class="step" id="step-3">
+            <div class="question-title">Soal 3: 75% - ( 0,2 x 1 1/2 ) + 1/4 = ...</div>
+            <label class="option-label"><input type="radio" name="q3" value="A"> A. 0,5</label>
+            <label class="option-label"><input type="radio" name="q3" value="B"> B. 0,6</label>
+            <label class="option-label"><input type="radio" name="q3" value="C"> C. 0,7</label>
+            <label class="option-label"><input type="radio" name="q3" value="D"> D. 0,8</label>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Sebelumnya</button>
+                <button type="button" class="btn" onclick="nextStep(3)">Selanjutnya</button>
+            </div>
         </div>
 
-        <!-- Soal 4 -->
-        <div class="question-box">
-            <div class="question-title">Soal 4: \(\left( 2\frac{1}{2} - 0,75 \right) \div \left( 50\% \times \frac{4}{5} \right) = \dots\)</div>
-            <label><input type="radio" name="q4" value="A" required> A. \(3\frac{3}{8}\)</label>
-            <label><input type="radio" name="q4" value="B"> B. \(4\frac{3}{8}\)</label>
-            <label><input type="radio" name="q4" value="C"> C. \(4\frac{1}{8}\)</label>
-            <label><input type="radio" name="q4" value="D"> D. \(5\frac{3}{8}\)</label>
+        <!-- Halaman 4 (Soal 4) -->
+        <div class="step" id="step-4">
+            <div class="question-title">Soal 4: ( 2 1/2 - 0,75 ) / ( 50% x 4/5 ) = ...</div>
+            <label class="option-label"><input type="radio" name="q4" value="A"> A. 3 3/8</label>
+            <label class="option-label"><input type="radio" name="q4" value="B"> B. 4 3/8</label>
+            <label class="option-label"><input type="radio" name="q4" value="C"> C. 4 1/8</label>
+            <label class="option-label"><input type="radio" name="q4" value="D"> D. 5 3/8</label>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Sebelumnya</button>
+                <button type="button" class="btn" onclick="nextStep(4)">Selanjutnya</button>
+            </div>
         </div>
 
-        <!-- Soal 5 -->
-        <div class="question-box">
-            <div class="question-title">Soal 5: \(2,5 + \frac{3}{5} \times 20\% - \frac{1}{2} = \dots\)</div>
-            <label><input type="radio" name="q5" value="A" required> A. \(2,02\)</label>
-            <label><input type="radio" name="q5" value="B"> B. \(2,12\)</label>
-            <label><input type="radio" name="q5" value="C"> C. \(2,22\)</label>
-            <label><input type="radio" name="q5" value="D"> D. \(2,32\)</label>
+        <!-- Halaman 5 (Soal 5) -->
+        <div class="step" id="step-5">
+            <div class="question-title">Soal 5: 2,5 + 3/5 x 20% - 1/2 = ...</div>
+            <label class="option-label"><input type="radio" name="q5" value="A"> A. 2,02</label>
+            <label class="option-label"><input type="radio" name="q5" value="B"> B. 2,12</label>
+            <label class="option-label"><input type="radio" name="q5" value="C"> C. 2,22</label>
+            <label class="option-label"><input type="radio" name="q5" value="D"> D. 2,32</label>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="prevStep(5)">Sebelumnya</button>
+                <button type="button" class="btn" onclick="nextStep(5)">Selanjutnya</button>
+            </div>
         </div>
 
-        <!-- Input Nama Siswa -->
-        <div class="form-group">
-            <label for="namaSiswa">Masukkan Nama Lengkap Anda:</label>
-            <input type="text" id="namaSiswa" name="namaSiswa" placeholder="Contoh: Budi Santoso" required>
+        <!-- Halaman 6 (Form Nama & Submit) -->
+        <div class="step" id="step-6">
+            <div class="question-title" style="color: var(--primary-blue); text-align: center; border: none; background: transparent;">Selesai! Silakan Masukkan Nama Anda</div>
+            <div class="form-group">
+                <label for="namaSiswa">Nama Lengkap:</label>
+                <input type="text" id="namaSiswa" name="namaSiswa" placeholder="Contoh: Budi Santoso">
+            </div>
+            <div class="btn-container">
+                <button type="button" class="btn btn-secondary" onclick="prevStep(6)">Sebelumnya</button>
+                <button type="submit" class="btn" id="submitBtn">Kirim Jawaban</button>
+            </div>
         </div>
 
-        <button type="submit" id="submitBtn">Kirim Jawaban</button>
         <div id="status-message"></div>
     </form>
 </div>
 
 <script>
-    // URL Web App Google Apps Script Anda (Ganti dengan URL dari langkah deployment spreadsheet)
+    // Ganti dengan URL Google Apps Script Web App Anda
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwHN6l_LdX2mttOyjNv3eUCCC1jjAvU-NKnxgHNzWTEGg2MBQ9SDRTcKWHjSxTztAEpyA/exec';
 
     const kunciJawaban = {
-        q1: 'A', // \frac{7}{8}
-        q2: 'B', // 2 2/11
-        q3: 'C', // 0,7
-        q4: 'B', // 4 3/8
-        q5: 'B'  // 2,12
+        q1: 'A',
+        q2: 'B',
+        q3: 'C',
+        q4: 'B',
+        q5: 'B'
     };
+
+    let currentStep = 1;
+
+    function updateProgress() {
+        const indicator = document.getElementById('progressIndicator');
+        if (currentStep <= 5) {
+            indicator.innerText = `Soal ${currentStep} dari 5`;
+        } else {
+            indicator.innerText = `Langkah Terakhir`;
+        }
+    }
+
+    function nextStep(step) {
+        const radios = document.getElementsByName(`q${step}`);
+        let answered = false;
+        for (let r of radios) {
+            if (r.checked) answered = true;
+        }
+
+        if (!answered) {
+            alert('Silakan pilih salah satu jawaban terlebih dahulu!');
+            return;
+        }
+
+        document.getElementById(`step-${currentStep}`).classList.remove('active');
+        currentStep++;
+        document.getElementById(`step-${currentStep}`).classList.add('active');
+        updateProgress();
+    }
+
+    function prevStep(step) {
+        document.getElementById(`step-${currentStep}`).classList.remove('active');
+        currentStep--;
+        document.getElementById(`step-${currentStep}`).classList.add('active');
+        updateProgress();
+    }
 
     const form = document.getElementById('quizForm');
     const statusMessage = document.getElementById('status-message');
@@ -212,10 +317,15 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault();
+        const nama = document.getElementById('namaSiswa').value.trim();
+        if (!nama) {
+            alert('Silakan masukkan nama lengkap Anda terlebih dahulu!');
+            return;
+        }
+
         submitBtn.disabled = true;
         submitBtn.innerText = 'Mengirim...';
 
-        const nama = document.getElementById('namaSiswa').value;
         const jawabanSiswa = [
             form.elements['q1'].value,
             form.elements['q2'].value,
@@ -224,7 +334,6 @@
             form.elements['q5'].value
         ];
 
-        // Hitung Skor otomatis
         let skor = 0;
         if (jawabanSiswa[0] === kunciJawaban.q1) skor += 20;
         if (jawabanSiswa[1] === kunciJawaban.q2) skor += 20;
@@ -238,7 +347,6 @@
             jawaban: jawabanSiswa
         };
 
-        // Kirim ke Google Spreadsheet menggunakan Fetch API
         fetch(scriptURL, {
             method: 'POST',
             mode: 'no-cors',
@@ -246,12 +354,12 @@
             body: JSON.stringify(dataObj)
         })
         .then(() => {
-            statusMessage.style.color = '#00ffcc';
-            statusMessage.innerHTML = `Terima kasih, ${nama}! Jawaban Anda berhasil dikirim. Skor Anda: <b>${skor}</b>`;
+            statusMessage.style.color = '#38bdf8';
+            statusMessage.innerHTML = `Terima kasih, ${nama}! Jawaban berhasil dikirim. Skor Anda: <b>${skor}</b>`;
             submitBtn.innerText = 'Terkirim!';
         })
         .catch(error => {
-            statusMessage.style.color = '#ff0055';
+            statusMessage.style.color = '#ec4899';
             statusMessage.innerHTML = 'Terjadi kesalahan saat mengirim. Silakan coba lagi.';
             submitBtn.disabled = false;
             submitBtn.innerText = 'Kirim Jawaban';
