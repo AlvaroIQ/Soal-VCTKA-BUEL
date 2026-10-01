@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Interaktif Operasi Hitung Campuran Pecahan</title>
+    <style>
+        /* Efek Neon Berubah-ubah pada Garis Tepi (Border) */
+        @keyframes neonGlow {
+            0% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px #ff0055; }
+            33% { border-color: #00ffcc; box-shadow: 0 0 15px #00ffcc, inset 0 0 10px #00ffcc; }
+            66% { border-color: #cc00ff; box-shadow: 0 0 15px #cc00ff, inset 0 0 10px #cc00ff; }
+            100% { border-color: #ff0055; box-shadow: 0 0 15px #ff0055, inset 0 0 10px #ff0055; }
+        }
+
+        @keyframes textNeon {
+            0% { color: #ff0055; text-shadow: 0 0 5px #ff0055, 0 0 10px #ff0055; }
+            33% { color: #00ffcc; text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; }
+            66% { color: #cc00ff; text-shadow: 0 0 5px #cc00ff, 0 0 10px #cc00ff; }
+            100% { color: #ff0055; text-shadow: 0 0 5px #ff0055, 0 0 10px #ff0055; }
+        }
+
+        body {
+            background-color: #0d0d1a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: #14142b;
+            border: 4px solid #ff0055;
+            border-radius: 15px;
+            padding: 30px;
+            animation: neonGlow 6s infinite;
+        }
+
+        h1 {
+            text-align: center;
+            animation: textNeon 6s infinite;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .question-box {
+            background: #1f1f3a;
+            border: 2px solid #3d3d6b;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+
+        .question-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #00ffcc;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        label:hover {
+            background: rgba(0, 255, 204, 0.1);
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #00ffcc;
+        }
+
+        .form-group {
+            margin-top: 20px;
+            background: #1f1f3a;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #cc00ff;
+        }
+
+        .form-group label {
+            color: #cc00ff;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            background: #0d0d1a;
+            border: 1px solid #00ffcc;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(45deg, #ff0055, #cc00ff);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 0 10px #cc00ff;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        #status-message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Kuis Campuran Pecahan, Desimal & Persen</h1>
+    
+    <form id="quizForm">
+        <!-- Soal 1 -->
+        <div class="question-box">
+            <div class="question-title">Soal 1: \(\frac{3}{4} + 0,5 \times 25\% = \dots\)</div>
+            <label><input type="radio" name="q1" value="A" required> A. \(\frac{7}{8}\)</label>
+            <label><input type="radio" name="q1" value="B"> B. \(\frac{5}{8}\)</label>
+            <label><input type="radio" name="q1" value="C"> C. \(1\frac{1}{8}\)</label>
+            <label><input type="radio" name="q1" value="D"> D. \(\frac{3}{8}\)</label>
+        </div>
+
+        <!-- Soal 2 -->
+        <div class="question-box">
+            <div class="question-title">Soal 2: \(1,2 \div \left( \frac{2}{5} + 15\% \right) = \dots\)</div>
+            <label><input type="radio" name="q2" value="A" required> A. \(1,75\)</label>
+            <label><input type="radio" name="q2" value="B"> B. \(2\frac{2}{11}\)</label>
+            <label><input type="radio" name="q2" value="C"> C. \(2,50\)</label>
+            <label><input type="radio" name="q2" value="D"> D. \(1\frac{1}{11}\)</label>
+        </div>
+
+        <!-- Soal 3 -->
+        <div class="question-box">
+            <div class="question-title">Soal 3: \(75\% - \left( 0,2 \times 1\frac{1}{2} \right) + \frac{1}{4} = \dots\)</div>
+            <label><input type="radio" name="q3" value="A" required> A. \(0,5\)</label>
+            <label><input type="radio" name="q3" value="B"> B. \(0,6\)</label>
+            <label><input type="radio" name="q3" value="C"> C. \(0,7\)</label>
+            <label><input type="radio" name="q3" value="D"> D. \(0,8\)</label>
+        </div>
+
+        <!-- Soal 4 -->
+        <div class="question-box">
+            <div class="question-title">Soal 4: \(\left( 2\frac{1}{2} - 0,75 \right) \div \left( 50\% \times \frac{4}{5} \right) = \dots\)</div>
+            <label><input type="radio" name="q4" value="A" required> A. \(3\frac{3}{8}\)</label>
+            <label><input type="radio" name="q4" value="B"> B. \(4\frac{3}{8}\)</label>
+            <label><input type="radio" name="q4" value="C"> C. \(4\frac{1}{8}\)</label>
+            <label><input type="radio" name="q4" value="D"> D. \(5\frac{3}{8}\)</label>
+        </div>
+
+        <!-- Soal 5 -->
+        <div class="question-box">
+            <div class="question-title">Soal 5: \(2,5 + \frac{3}{5} \times 20\% - \frac{1}{2} = \dots\)</div>
+            <label><input type="radio" name="q5" value="A" required> A. \(2,02\)</label>
+            <label><input type="radio" name="q5" value="B"> B. \(2,12\)</label>
+            <label><input type="radio" name="q5" value="C"> C. \(2,22\)</label>
+            <label><input type="radio" name="q5" value="D"> D. \(2,32\)</label>
+        </div>
+
+        <!-- Input Nama Siswa -->
+        <div class="form-group">
+            <label for="namaSiswa">Masukkan Nama Lengkap Anda:</label>
+            <input type="text" id="namaSiswa" name="namaSiswa" placeholder="Contoh: Budi Santoso" required>
+        </div>
+
+        <button type="submit" id="submitBtn">Kirim Jawaban</button>
+        <div id="status-message"></div>
+    </form>
+</div>
+
+<script>
+    // URL Web App Google Apps Script Anda (Ganti dengan URL dari langkah deployment spreadsheet)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwHN6l_LdX2mttOyjNv3eUCCC1jjAvU-NKnxgHNzWTEGg2MBQ9SDRTcKWHjSxTztAEpyA/exec';
+
+    const kunciJawaban = {
+        q1: 'A', // \frac{7}{8}
+        q2: 'B', // 2 2/11
+        q3: 'C', // 0,7
+        q4: 'B', // 4 3/8
+        q5: 'B'  // 2,12
+    };
+
+    const form = document.getElementById('quizForm');
+    const statusMessage = document.getElementById('status-message');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Mengirim...';
+
+        const nama = document.getElementById('namaSiswa').value;
+        const jawabanSiswa = [
+            form.elements['q1'].value,
+            form.elements['q2'].value,
+            form.elements['q3'].value,
+            form.elements['q4'].value,
+            form.elements['q5'].value
+        ];
+
+        // Hitung Skor otomatis
+        let skor = 0;
+        if (jawabanSiswa[0] === kunciJawaban.q1) skor += 20;
+        if (jawabanSiswa[1] === kunciJawaban.q2) skor += 20;
+        if (jawabanSiswa[2] === kunciJawaban.q3) skor += 20;
+        if (jawabanSiswa[3] === kunciJawaban.q4) skor += 20;
+        if (jawabanSiswa[4] === kunciJawaban.q5) skor += 20;
+
+        const dataObj = {
+            nama: nama,
+            skor: skor,
+            jawaban: jawabanSiswa
+        };
+
+        // Kirim ke Google Spreadsheet menggunakan Fetch API
+        fetch(scriptURL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataObj)
+        })
+        .then(() => {
+            statusMessage.style.color = '#00ffcc';
+            statusMessage.innerHTML = `Terima kasih, ${nama}! Jawaban Anda berhasil dikirim. Skor Anda: <b>${skor}</b>`;
+            submitBtn.innerText = 'Terkirim!';
+        })
+        .catch(error => {
+            statusMessage.style.color = '#ff0055';
+            statusMessage.innerHTML = 'Terjadi kesalahan saat mengirim. Silakan coba lagi.';
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'Kirim Jawaban';
+            console.error('Error!', error.message);
+        });
+    });
+</script>
+
+</body>
+</html>
